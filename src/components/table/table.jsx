@@ -68,7 +68,19 @@ export function Column({
     default:
       switch (field) {
         case 'choice':
-          return <td {...props}>{children}</td>;
+          return (
+            <td {...props}>
+              {React.Children.map(children, (child) => (
+                <child.type
+                  {...child.props}
+                  key={`item_${rowKey}_${child.props.field}`}    
+                  field={field}
+                  id={item.id}  
+                  checked={child.props.selected.includes(`${item.id}`)}                
+                />
+              ))}
+            </td>
+          );
         case 'action':
           return <td {...props}>{children}</td>;
         default:
@@ -88,11 +100,3 @@ export function Column({
       }
   }
 }
-
-export const CheckBox = React.forwardRef((props, ref) => (
-  <input
-    ref={ref}
-    type="checkbox"
-    //className={styles.selector}
-  />
-));

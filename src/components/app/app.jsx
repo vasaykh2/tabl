@@ -3,10 +3,11 @@ import React, { useReducer } from 'react';
 import { Form } from '../form';
 import { Layout } from './layout';
 import { Dropdown } from '../dropdown/dropdown';
-import { Table, Column } from '../table/table';
+import { Table, Column, CheckBox } from '../table/table';
 import { Tabs, Tab } from '../tabs/tabs';
 import { EditableList } from '../list/list';
 import { DATA } from '../../utils/types';
+import { Input } from './examples';
 
 const initialState = {
   items: DATA,
@@ -50,8 +51,7 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const refChoice = React.createRef();
-  
+  //console.log(state);
   return (
     <Layout header={<h1>React base examples</h1>}>
       <section>
@@ -60,15 +60,12 @@ function App() {
             <Table data={state.items}>
               <Column field="choice" header="Выбор">
                 <input
-                ref={refChoice}
                   type="checkbox"
-                  //className={styles.selector}
-                  //checked={state.selected.includes(item.id)}
+                  selected={state.selected}
                   onChange={(e) => {
-                    console.log(e);
                     return dispatch({
                       type: e.target.checked ? 'select' : 'unselect',
-                      target: refChoice,
+                      target: e.target.id,
                     });
                   }}
                 />
