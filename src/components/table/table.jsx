@@ -73,7 +73,7 @@ export function Column({
               {React.Children.map(children, (child) => (
                 <child.type
                   {...child.props}
-                  key={`item_${rowKey}_${child.props.field}`}    
+                  key={`item_${rowKey}_${child.props.field}_checkbox`}    
                   field={field}
                   id={item.id}  
                   checked={child.props.selected.includes(`${item.id}`)}                
@@ -82,7 +82,17 @@ export function Column({
             </td>
           );
         case 'action':
-          return <td {...props}>{children}</td>;
+          return <td {...props}>
+            {React.Children.map(children, (child) => (
+                <child.type
+                  {...child.props}
+                  key={`item_${rowKey}_${child.props.field}_delete`}    
+                  field={field}
+                  id={item.id}  
+                  //checked={child.props.selected.includes(`${item.id}`)}                
+                />
+              ))}
+          </td>;
         default:
           return (
             <td {...props}>
