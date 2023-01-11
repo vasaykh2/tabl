@@ -67,10 +67,10 @@ function reducer(state, action) {
       //console.log(indexEl, state.items);
       return {
         ...state,
-        items: (() => {          
-            const newArr = state.items.filter((item) => item !== el1);
-            newArr.splice(indexEl1 + 1, 0, el1);
-            return newArr;          
+        items: (() => {
+          const newArr = state.items.filter((item) => item !== el1);
+          newArr.splice(indexEl1 + 1, 0, el1);
+          return newArr;
         })(),
       };
       break;
@@ -143,7 +143,6 @@ function App() {
                 >
                   Вниз
                 </button>
-
               </Column>
             </Table>
             <button

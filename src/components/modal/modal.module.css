@@ -1,0 +1,30 @@
+.container {
+  /*position: relative;*/
+}
+
+.trigger {
+  position: relative;
+}
+
+.panel {
+  border: 1px solid black;
+  padding: 1rem;
+  position: absolute;
+  display: block;
+  background: white;
+  text-align: center;
+}
+
+.panel_title {
+  margin: 0;
+}
+
+.panel_body {
+}
+
+.button {
+  margin: 0 auto;
+}
+/*.active .panel {
+    display: block;
+}*/

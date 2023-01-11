@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { Modal } from '../modal/modal';
 import styles from './table.module.css';
 import clsx from 'clsx';
 
@@ -95,7 +96,9 @@ export function Column({
           </td>;
         default:
           return (
+           
             <td {...props}>
+               <Modal label="dropdown panel" title="hidden content">
               {bodyTemplate
                 ? bodyTemplate({
                     field,
@@ -105,7 +108,9 @@ export function Column({
                     ...props,
                   })
                 : item[field]}
+                 </Modal>
             </td>
+           
           );
       }
   }
