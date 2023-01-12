@@ -11,7 +11,7 @@ export const DropdownContainer = React.forwardRef(
       </div>
     );
   }
-);
+); 
 
 export const DropdownTrigger = React.forwardRef(
   ({ children, onClick }, ref) => {
